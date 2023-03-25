@@ -25,6 +25,10 @@ const ProductSchema = new mongoose.Schema({
     color: {
         type: Array
     },
+    mrp: {
+        type: Number,
+        require: true
+    },
     price: {
         type: Number,
         require: true

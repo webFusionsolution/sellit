@@ -45,6 +45,7 @@ router.delete('/:id', verifyTokenandAdmin, async (req, res) => {
 router.get('/', async (req, res) => {   
     const qNew = req.query.new;
     const qCategory = req.query.category; 
+    const qFeature = req.query.feature; 
     try {
         let products;
         if(qNew) {
@@ -54,7 +55,13 @@ router.get('/', async (req, res) => {
             categories:{
                 $in: [qCategory]
             }});
-        } else {
+        }  else if(qFeature) {
+            products = await Product.find({
+                feature:{
+                    $in: [qFeature]
+            }});
+        }
+        else {
             products = await Product.find()
         }
        

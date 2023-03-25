@@ -56,7 +56,7 @@ router.get('/', async (req, res) => {
                 $in: [qCategory]
             }});
         }  else if(qFeature) {
-            products = await Product.find({feature: true}).limit(8);
+            products = await Product.find({feature: true}).sort({createdAt: -1}).limit(8);
         }
         else {
             products = await Product.find()

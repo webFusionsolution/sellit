@@ -11,18 +11,13 @@ const productRoute = require("./routes/products");
 const cartRoute = require("./routes/cart");
 const orderRoute = require("./routes/order");
 const emailRoute = require("./routes/email");
-
+import connectDB from './config/connectdb.js'
+const DATABASE_URL = process.env.DATABASE_URL
 
 
 dotenv.config();
 
-mongoose.connect(process.env.MONGO_URL, {
-    useNewUrlParser: true, 
-    useUnifiedTopology: true
-}, () => {
-    console.log('connected to Mongo db')
-});
-
+connectDB(DATABASE_URL);
 
 
 // Middle warevs

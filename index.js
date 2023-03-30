@@ -11,11 +11,13 @@ const productRoute = require("./routes/products");
 const cartRoute = require("./routes/cart");
 const orderRoute = require("./routes/order");
 const emailRoute = require("./routes/email");
-import connectDB from './config/connectdb.js'
-const DATABASE_URL = process.env.DATABASE_URL
+import connectDB from './config/connectdb.js';
+const DATABASE_URL = process.env.DATABASE_URL;
 
 
 dotenv.config();
+
+app.use(cors()); // <---- use cors middleware
 
 connectDB(DATABASE_URL);
 
@@ -25,7 +27,7 @@ app.use(express.json());
 app.use(helmet());
 app.use(morgan("common"));
 
-app.use(cors()); // <---- use cors middleware
+
 
 app.use("/api/users", userRoute);
 app.use("/api/auth", authRoute);

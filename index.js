@@ -11,7 +11,7 @@ const productRoute = require("./routes/products");
 const cartRoute = require("./routes/cart");
 const orderRoute = require("./routes/order");
 const emailRoute = require("./routes/email");
-import connectDB from './config/connectdb.js';
+//import connectDB from './config/connectdb.js';
 const DATABASE_URL = process.env.DATABASE_URL;
 
 
@@ -19,7 +19,13 @@ dotenv.config();
 
 app.use(cors()); // <---- use cors middleware
 
-connectDB(DATABASE_URL);
+// connectDB(DATABASE_URL);
+mongoose.connect(process.env.MONGO_URL, {
+    useNewUrlParser: true, 
+    useUnifiedTopology: true
+}, () => {
+    console.log('connected to Mongo db')
+});
 
 
 // Middle warevs

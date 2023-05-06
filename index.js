@@ -11,7 +11,9 @@ const productRoute = require("./routes/products");
 const cartRoute = require("./routes/cart");
 const orderRoute = require("./routes/order");
 const categoryRoute = require("./routes/category");
+const brandRoute = require("./routes/brand");
 const emailRoute = require("./routes/email");
+
 //import connectDB from './config/connectdb.js';
 const DATABASE_URL = process.env.DATABASE_URL;
 
@@ -42,7 +44,8 @@ app.use("/api/products", productRoute);
 app.use("/api/cart", cartRoute);
 app.use("/api/orders", orderRoute);
 app.use("/api/categories", categoryRoute);
-
+app.use("/api/brand", brandRoute);
+ 
 //app.use("/api/email", emailRoute);
 
 

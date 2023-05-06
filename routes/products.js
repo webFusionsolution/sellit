@@ -46,6 +46,7 @@ router.get('/', async (req, res) => {
     const qNew = req.query.new;
     const qCategory = req.query.category; 
     const qFeature = req.query.feature; 
+    const qBrand = req.query.brand; 
     try {
         let products;
         if(qNew) {
@@ -57,6 +58,9 @@ router.get('/', async (req, res) => {
             }});
         }  else if(qFeature) {
             products = await Product.find({feature: true}).sort({createdAt: -1}).limit(8);
+        }
+        else if(qBrand) {
+            products = await Product.find({brand: qBrand}).sort({createdAt: -1});
         }
         else {
             products = await Product.find()
